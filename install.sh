@@ -19,23 +19,26 @@ printf "========================================================================
 printf "+          <WGDashboard> by Donald Zou - https://github.com/donaldzou           +\n"
 printf "=================================================================================\n"
 printf "| Installing WGDashboard...                                                     |\n"
-
 printf "| Checking if Python3 and Pip are installed...                                  |\n"
-if ! python3 --version; then
+if ! python3 --version >  /dev/null 2>&1; then
+  printf "=================================================================================\n"
   printf "| Python 3 is not installed, required Python 3.7 or above                       |\n"
+  printf "=================================================================================\n"
   exit_install
 fi
-if ! python3 -m pip -V; then
+if ! python3 -m pip -V >  /dev/null 2>&1; then
+  printf "=================================================================================\n"
   printf "| Pip is not installed                                                          |\n"
+  printf "=================================================================================\n"
   exit_install
 fi
-
 printf "| Checking Python version...                                                    |\n"
 if [ $version_pass == "0" ]; then
+  printf "=================================================================================\n"
   printf "| WGDashboard required Python 3.7 or above                                      |\n"
+  printf "=================================================================================\n"
   exit_install
 fi
-
 printf "| Downloading WGDashboard from GitHub...                                        |\n"
 git clone -b $new_ver $git_url wgdashboard >  /dev/null 2>&1
 printf "| Installing Python dependencies...                                             |\n"
