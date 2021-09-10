@@ -46,12 +46,9 @@ python3 -m pip install -r wgdashboard/src/requirements.txt >  /dev/null 2>&1
 rm wgdashboard/src/db/hi.txt >  /dev/null 2>&1
 chmod u+x wgdashboard/src/wgd.sh
 chmod -R 755 /etc/wireguard
+rm wgdashboard/src/install.sh
 printf "| WGDashboard installed successfully!                                           |\n"
 printf "| You can now start WGDashboard by:                                             |\n"
 printf "|         > cd wgdashboard/src                                                  |\n"
 printf "|         > ./wgd.sh start                                                      |\n"
 printf "=================================================================================\n"
-
-
-
-

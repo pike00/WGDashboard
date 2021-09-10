@@ -15,30 +15,29 @@ help () {
   printf "|    stop: To stop WGDashboard.                                                 |\n"
   printf "|    debug: To start WGDashboard in debug mode (i.e run in foreground).         |\n"
   printf "|    update: To update WGDashboard to the newest version from GitHub.           |\n"
-  printf "|    install: To install WGDashboard.                                           |\n"
   printf "| Thank you for using! Your support is my motivation ;)                         |\n"
   printf "=================================================================================\n"
 }
 
-install_wgd(){
-    # Check Python3 version
-    version_pass=$(python3 -c 'import sys; print("1") if (sys.version_info.major == 3 and sys.version_info.minor >= 7) else print("0");')
-    if [ $version_pass == "0" ]
-      then printf "| WGDashboard required Python3.7+                  |\n"
-      printf "%s\n" "$dashes"
-      exit 1
-    fi
-
-    rm db/hi.txt >  /dev/null 2>&1
-    if [ ! -d "log" ]
-      then mkdir "log"
-    fi
-    printf "| Installing latest Python dependencies                    |\n"
-    python3 -m pip install -r requirements.txt >  /dev/null 2>&1
-    printf "| WGDashboard installed successfully!              |\n"
-    printf "| Starting Dashboard                                       |\n"
-    start_wgd
-}
+#install_wgd(){
+#    # Check Python3 version
+#    version_pass=$(python3 -c 'import sys; print("1") if (sys.version_info.major == 3 and sys.version_info.minor >= 7) else print("0");')
+#    if [ $version_pass == "0" ]
+#      then printf "| WGDashboard required Python3.7+                  |\n"
+#      printf "%s\n" "$dashes"
+#      exit 1
+#    fi
+#
+#    rm db/hi.txt >  /dev/null 2>&1
+#    if [ ! -d "log" ]
+#      then mkdir "log"
+#    fi
+#    printf "| Installing latest Python dependencies                    |\n"
+#    python3 -m pip install -r requirements.txt >  /dev/null 2>&1
+#    printf "| WGDashboard installed successfully!              |\n"
+#    printf "| Starting Dashboard                                       |\n"
+#    start_wgd
+#}
 
 
 check_wgd_status(){
@@ -52,7 +51,7 @@ check_wgd_status(){
 
 start_wgd () {
     printf "%s\n" "$dashes"
-    printf "| Starting WGDashboard in the background.          |\n"
+    printf "| Starting WGDashboard in the background.                 |\n"
     if [ ! -d "log" ]
       then mkdir "log"
     fi
@@ -121,8 +120,8 @@ if [ "$#" != 1 ];
         fi
       elif [ "$1" = "update" ]; then
         update_wgd
-      elif [ "$1" = "install" ]; then
-        install_wgd
+#      elif [ "$1" = "install" ]; then
+#        install_wgd
       elif [ "$1" = "restart" ]; then
          if check_wgd_status; then
            printf "%s\n" "$dashes"
