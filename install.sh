@@ -7,6 +7,14 @@ version_pass=$(python3 -c 'import sys; print("1") if (sys.version_info.major == 
 # Get the newest version
 new_ver=$(python3 -c "import json; import urllib.request; data = urllib.request.urlopen('https://api.github.com/repos/donaldzou/WGDashboard/releases/latest').read(); output = json.loads(data);print(output['tag_name'])")
 
+exit_install(){
+  printf "| Installation stopped                                                          |\n"
+  printf "%s\n" "$dashes"
+  exit 1
+}
+
+
+
 printf "=================================================================================\n"
 printf "+          <WGDashboard> by Donald Zou - https://github.com/donaldzou           +\n"
 printf "=================================================================================\n"
@@ -15,17 +23,17 @@ printf "| Installing WGDashboard...                                             
 printf "| Checking if Python3 and Pip are installed...                                  |\n"
 if ! python3 --version; then
   printf "| Python 3 is not installed, required Python 3.7 or above                       |\n"
-  exit_install()
+  exit_install
 fi
 if ! python3 -m pip -V; then
   printf "| Pip is not installed                                                          |\n"
-  exit_install()
+  exit_install
 fi
 
 printf "| Checking Python version...                                                    |\n"
 if [ $version_pass == "0" ]; then
   printf "| WGDashboard required Python 3.7 or above                                      |\n"
-  exit_install()
+  exit_install
 fi
 
 printf "| Downloading WGDashboard from GitHub...                                        |\n"
@@ -43,9 +51,4 @@ printf "========================================================================
 
 
 
-exit_install(){
-  printf "| Installation stopped                                                          |\n"
-  printf "%s\n" "$dashes"
-  exit 1
-}
 
