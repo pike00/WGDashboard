@@ -28,6 +28,7 @@ install_wgd(){
       printf "%s\n" "$dashes"
       exit 1
     fi
+
     rm db/hi.txt >  /dev/null 2>&1
     if [ ! -d "log" ]
       then mkdir "log"
