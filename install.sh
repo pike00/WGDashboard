@@ -15,17 +15,17 @@ printf "| Installing WGDashboard...                                             
 printf "| Checking if Python3 and Pip are installed...                                  |\n"
 if ! python3 --version; then
   printf "| Python 3 is not installed, required Python 3.7 or above                       |\n"
-  exit_install
+  exit_install()
 fi
 if ! python3 -m pip -V; then
   printf "| Pip is not installed                                                          |\n"
-  exit_install
+  exit_install()
 fi
 
 printf "| Checking Python version...                                                    |\n"
 if [ $version_pass == "0" ]; then
   printf "| WGDashboard required Python 3.7 or above                                      |\n"
-  exit_install
+  exit_install()
 fi
 
 printf "| Downloading WGDashboard from GitHub...                                        |\n"
